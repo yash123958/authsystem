@@ -1,0 +1,26 @@
+{%extends "index.html"%}
+{% load static %}
+{%block title%}Home{%endblock%}
+{%block body%}
+<style>
+    .custombox {
+        background-color: rgba(255, 255, 255, 0.6); /* Added semicolon */
+        background-size: cover;
+        background-position: center;
+        height: 1000px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .custombox h1{
+        color:white;
+        font-weight:100px;
+        font-size:60px;
+        
+    }
+</style>
+<div class="custombox" style="background-image: url('{% static 'image.png' %}'); height: 1000px;">
+  <h1>Let yourself be impressed</h1>
+</div>
+{%endblock%}

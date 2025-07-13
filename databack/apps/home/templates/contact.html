@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+ <script src="https://cdn.tailwindcss.com"></script>
+<div class="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-6 text-center text-gray-700">Contact Page</h1>
+
+        <!-- Show error if any -->
+        {% if error %}
+            <div class="mb-4 text-red-600 text-center font-medium">
+                {{ error }}
+            </div>
+        {% endif %}
+
+        <form method="post" class="space-y-4">
+            {% csrf_token %}
+            <div>
+                <input type="text" name="username" placeholder="Username"
+                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    required>
+            </div>
+            <div>
+                <input type="password" name="password" placeholder="Password"
+                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    required>
+            </div>
+            <div>
+                <button type="submit"
+                    class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+                    Enter
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{%endblock%}
