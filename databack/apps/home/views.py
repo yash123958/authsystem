@@ -13,9 +13,15 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
+####
+@login_required(login_url="/contact/")
+def dashboard(request):
+    return render(request, 'dashboard.html')
+####
+
 def contact(request):
     if request.user.is_authenticated:
-        return render(request, 'contact.html', {'message': 'You are already logged in.'})
+        return redirect('dashboard')
 
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -24,15 +30,18 @@ def contact(request):
         user = authenticate(request, username=username, password=password)
         if user:
             login(request, user)
-            return redirect('home')
+            return redirect('dashboard')
+        
         else:
-            try:
-                user = User.objects.create_user(username=username, password=password)
-                user.save()
-                login(request, user)
-                return redirect('home')
-            except:
-                return render(request, 'contact.html', {'error': 'Username already exists'})
+            return render(request, 'contact.html', {'error': 'Invalid credentials'})
+        # else:
+        #     try:
+        #         user = User.objects.create_user(username=username, password=password)
+        #         user.save()
+        #         login(request, user)
+        #         return redirect('dashboard')
+        #     except:
+        #         return render(request, 'contact.html', {'error': 'Username already exists'})
 
     return render(request, 'contact.html')
 
@@ -61,4 +70,4 @@ def register_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('start')
+    return redirect('contact')

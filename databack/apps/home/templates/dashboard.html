@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>MyDash</h2>
+        <ul>
+            <li><i class="fas fa-home"></i> Dashboard</li>
+            <li><i class="fas fa-user"></i> Profile</li>
+            <li><i class="fas fa-chart-bar"></i> Analytics</li>
+            <li><i class="fas fa-cog"></i> Settings</li>
+            <li class="fas fa-home"><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+        <div class="topbar">
+            <h1>Dashboard</h1>
+            <input type="text" placeholder="Search..." />
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Users</h3>
+                <p>1,245</p>
+            </div>
+            <div class="card">
+                <h3>Revenue</h3>
+                <p>$34,567</p>
+            </div>
+            <div class="card">
+                <h3>Orders</h3>
+                <p>578</p>
+            </div>
+            <div class="card">
+                <h3>Feedback</h3>
+                <p>123</p>
+            </div>
+        </div>
+
+        <div class="chart-placeholder">
+            <p>Chart Section (You can add charts here using Chart.js or any library)</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

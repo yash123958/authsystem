@@ -34,6 +34,7 @@ urlpatterns = [
     # Home app views
     path('', home_views.start, name='start'),
     path('home/', home_views.home, name='home'),
+    path('dashboard/', home_views.dashboard, name='dashboard'),
     path('about/', home_views.about, name='about'),
     path('contact/', home_views.contact, name='contact'),  # Login or create account
     path('register/', home_views.register_view, name='register'),  # Register new user
